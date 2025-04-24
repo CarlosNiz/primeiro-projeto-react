@@ -75,7 +75,7 @@ export default function Main() {
                 Meus Repositorios
             </h1>
 
-            <Form onSubmit={handleSubmit} error={alert}>  
+            <Form onSubmit={handleSubmit} $error={alert}>  
                 <input
                 type="text" 
                 placeholder="Adicionar Repositorios"

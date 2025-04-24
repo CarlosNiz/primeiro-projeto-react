@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Container } from './styles';
+import { Container, Owner, Loading, BackButton } from './styles';
+import { FaArrowLeft } from 'react-icons/fa';
 import api from '../../services/api';
 import { useParams } from "react-router-dom";
 
@@ -34,9 +35,28 @@ export default function Repositorio() {
 
     }, [repositorioParam]);
 
+    if(loading) {
+        return(
+            <Loading>
+                <h1>Carregando</h1>
+            </Loading>
+        );
+    }
+
     return( 
         <Container>
+            <BackButton to="/">
+                <FaArrowLeft color="#000" size={30} />
+            </BackButton>
 
+            <Owner>
+                <img 
+                    src={repositorio.owner.avatar_url} 
+                    alt={repositorio.owner.login} 
+                />
+                <h1>{repositorio.name}</h1>
+                <p>{repositorio.description}</p>
+            </Owner>
         </Container>
     );
 }
